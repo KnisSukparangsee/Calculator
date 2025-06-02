@@ -1,0 +1,4 @@
+.numPad {
+  display: flex;
+  gap: 8px;
+}
