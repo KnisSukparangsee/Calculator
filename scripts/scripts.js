@@ -35,10 +35,14 @@ function operate(operator, num1, num2) {
       result = multiply(num1, num2);
       break;
     case "/":
+      if (num2 === "0") {
+        alert("You can't divide by zero.");
+        return;
+      }
       result = divide(num1, num2);
       break;
   }
-  result = result.toFixed(5);
+  result = roundNumber(+result, 5).toString();
   console.log(num1);
   console.log(num2);
   updateDisplay(result);
@@ -46,6 +50,10 @@ function operate(operator, num1, num2) {
   console.log(operand1);
   operand2 = "";
   storeOne = true;
+}
+
+function roundNumber(num, dec) {
+  return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
 }
 
 document.documentElement.addEventListener("keydown", (event) => {
