@@ -17,7 +17,7 @@ function divide(a, b) {
 let operand1 = "";
 let operand2 = "";
 let operator = "";
-let flag = false;
+let storeOne = true;
 
 function operate(operator, num1, num2) {
   let result;
@@ -35,7 +35,9 @@ function operate(operator, num1, num2) {
       result = divide(num1, num2);
       break;
   }
-  display.textContent = result;
+  console.log(num1);
+  console.log(num2);
+  updateDisplay(result);
   operand1 = result;
   operand2 = "";
 }
@@ -43,29 +45,34 @@ function operate(operator, num1, num2) {
 const display = document.querySelector(".display");
   
 const operators = document.querySelectorAll(".operations > button");
-operators.forEach((op) => op.addEventListener("click", () => addOperator(op.textContent)));
+operators.forEach((op) => op.addEventListener("click", () => displayOperator(op.textContent)));
 
-const numbers = document.querySelectorAll(".numPad > button");
-numbers.forEach((num) => num.addEventListener("click", () => addNumber(num.textContent)));
+const numbers = document.querySelectorAll(".numPad button:not(#equal)");
+numbers.forEach((num) => num.addEventListener("click", () => displayNumber(num.textContent)));
 
-function updateDisplay() {
-  display.textContent = `${operand1} ${operator} ${operand2}`;
+function updateDisplay(str) {
+  display.textContent = str;
 }
 
-function addNumber(n) {
-  if (!flag) {
+function displayNumber(n) {
+  if (storeOne) {
     operand1 += n;
+    updateDisplay(operand1);
   } else {
     operand2 += n;
+    updateDisplay(operand2);
   }
-  display.textContent += n;
-  console.log(`op1: ${operand1}`);
-  console.log(`op2: ${operand2}`);
 }
 
-function addOperator(op) {
+function displayOperator(op) {
   operator = op;
-  flag = !flag;
+  if (operand2 !== "") {
+    operate(operator, operand1, operand2);
+    storeOne = false;
+    return;
+  }
+  storeOne = false;
+  updateDisplay("");
 }
 
 
@@ -80,4 +87,6 @@ function clear() {
 }
 
 const equal = document.querySelector("#equal");
-equal.addEventListener("click", () => operate(operator, operand1, operand2));
+equal.addEventListener("click", () => {
+  operate(operator, operand1, operand2);
+});
