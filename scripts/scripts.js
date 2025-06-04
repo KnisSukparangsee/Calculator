@@ -42,8 +42,10 @@ function operate(operator, num1, num2) {
   console.log(num1);
   console.log(num2);
   updateDisplay(result);
-  operand1 = result;
+  operand1 = result.toString();
+  console.log(operand1);
   operand2 = "";
+  storeOne = true;
 }
 
 document.documentElement.addEventListener("keydown", (event) => {
@@ -56,8 +58,23 @@ document.documentElement.addEventListener("keydown", (event) => {
     displayOperator(key);
   } else if (key === "Enter") {
     operate(operator, operand1, operand2);
+  } else if (key === "Backspace") {
+    deleteNumber();
   }
 });
+
+const deleteBtn = document.querySelector("#delete");
+deleteBtn.addEventListener("click", deleteNumber);
+
+function deleteNumber() {
+  if (storeOne) {
+    operand1 = operand1.substring(0, operand1.length - 1);
+    updateDisplay(operand1);
+  } else {
+    operand2 = operand2.substring(0, operand2.length - 1);
+    updateDisplay(operand2);
+  }
+}
 
 const display = document.querySelector(".display");
   
