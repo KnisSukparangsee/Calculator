@@ -35,6 +35,7 @@ function operate(operator, num1, num2) {
       result = divide(num1, num2);
       break;
   }
+  result = result.toFixed(5);
   console.log(num1);
   console.log(num2);
   updateDisplay(result);
