@@ -20,6 +20,9 @@ let operator = "";
 let storeOne = true;
 
 function operate(operator, num1, num2) {
+  if (!num2) {
+    return;
+  }
   let result;
   switch (operator) {
     case "+":
@@ -42,6 +45,19 @@ function operate(operator, num1, num2) {
   operand1 = result;
   operand2 = "";
 }
+
+document.documentElement.addEventListener("keydown", (event) => {
+  const key = event.key;
+  if (!isNaN(+key)) {
+    displayNumber(key);
+  } else if (key === ".") {
+    displayDot();
+  } else if (key === "+" || key === "-" || key === "*" || key === "/") {
+    displayOperator(key);
+  } else if (key === "Enter") {
+    operate(operator, operand1, operand2);
+  }
+});
 
 const display = document.querySelector(".display");
   
