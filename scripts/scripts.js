@@ -48,8 +48,25 @@ const display = document.querySelector(".display");
 const operators = document.querySelectorAll(".operations > button");
 operators.forEach((op) => op.addEventListener("click", () => displayOperator(op.textContent)));
 
-const numbers = document.querySelectorAll(".numPad button:not(#equal)");
+const numbers = document.querySelectorAll(".numPad button:not(#equal):not(#dot)");
 numbers.forEach((num) => num.addEventListener("click", () => displayNumber(num.textContent)));
+
+const dotBtn = document.querySelector("#dot");
+dotBtn.addEventListener("click", displayDot);
+
+function displayDot() {
+  if (storeOne) {
+    if (!operand1.includes(".")) {
+      operand1 += ".";
+      updateDisplay(operand1);
+    }
+  } else {
+    if (!operand2.includes(".")) {
+      operand2 += ".";
+      updateDisplay(operand2);
+    }
+  }
+}
 
 function updateDisplay(str) {
   display.textContent = str;
