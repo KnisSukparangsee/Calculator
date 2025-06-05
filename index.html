@@ -4,43 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="styles/styles.css">
   <script src="scripts/scripts.js" defer></script>
 </head>
 <body>
-  <div>Calculator</div>
-  <div class="display"></div>
-  <div class="numPad">
-    <div>
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
+  <div class="header">Calculator by Phil</div>
+
+  <div class="content">
+    <div class="calculator">
+      <div class="display"></div>
+  
+      <div class="keyPad">
+        <div class="numPad">
+          <div class="remove">
+            <button id="delete">DEL</button>
+            <button id="clear">AC</button>
+          </div>
+  
+          <div class="numbers">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+          </div>
+          
+          <div class="numbers">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+          </div>
+          
+          <div class="numbers">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+          </div>
+          
+          <div class="numbers">
+            <button id="dot">.</button>
+            <button>0</button>
+            <button id="equal">=</button>
+          </div>
+        </div>
+  
+        <div class="operations">
+          <button>+</button>
+          <button>-</button>
+          <button>*</button>
+          <button>/</button>
+        </div>
+      </div>
     </div>
-    
-    <div>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-    </div>
-    
-    <div>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-    </div>
-    
-    <div>
-      <button id="dot">.</button>
-      <button>0</button>
-      <button id="equal">=</button>
-    </div>
+
   </div>
-  <div class="operations">
-    <button>+</button>
-    <button>-</button>
-    <button>*</button>
-    <button>/</button>
-  </div>
-  <button id="delete">DEL</button>
-  <button id="clear">AC</button>
+
+  <div class="footer">Keyboard Supported</div>
 </body>
 </html>
